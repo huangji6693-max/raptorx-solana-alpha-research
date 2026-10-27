@@ -1,11 +1,17 @@
 import unittest
 from near_market_agents import (
+    DubbingLine,
+    LocalProviderContact,
     TranscriptSentence,
     audit_python_source,
     check_brand_name_availability,
     deduplicate_csv_records,
+    evaluate_sentinel_commit_543a0231,
     generate_video_clips,
+    run_call_for_me_booking_agent,
+    run_local_services_quote_agent,
     run_pay_per_use_media_generator,
+    run_video_dubbing_agent,
 )
 
 
@@ -102,6 +108,103 @@ class TestNearMarketAgents(unittest.TestCase):
         vuln_py = 'import subprocess, pickle\nsubprocess.run(cmd, shell=True)\npickle.loads(data)\neval(user_input)\ncursor.execute(f"SELECT * FROM users WHERE name = {u}")\n'
         findings = audit_python_source(vuln_py)
         self.assertEqual(len(findings), 4)
+
+    def test_video_dubbing_agent_consent_sync_and_protected_terms(self):
+        lines = [
+            DubbingLine("spk1", 0.0, 4.0, "Welcome to RaptorX on NEAR Protocol.", "Bienvenidos a RaptorX en NEAR Protocol."),
+            DubbingLine("spk2", 4.2, 8.0, "Our latency dropped by 40 percent.", "Nuestra latencia cayó un cuarenta por ciento en producción hoy."),
+        ]
+        # Without confirmed consent, speaker voice request falls back to stock_voice
+        res_no_consent = run_video_dubbing_agent(
+            lines,
+            target_languages=["es", "de"],
+            use_speaker_voice=True,
+            speaker_consent_confirmed=False,
+            do_not_translate=["RaptorX", "NEAR Protocol"],
+        )
+        self.assertEqual(res_no_consent["voice_mode_used"], "stock_voice")
+        self.assertIsNotNone(res_no_consent["consent_fallback_note"])
+        self.assertTrue(res_no_consent["background_music_and_sfx_audible"])
+        es_out = res_no_consent["languages"]["es"]
+        self.assertFalse(es_out.synced_lines[0]["overlaps_next_speaker"])
+        self.assertIn("RaptorX", es_out.synced_lines[0]["text"])
+
+    def test_local_services_quote_agent_no_invented_prices_and_scope_diffs(self):
+        providers = [
+            LocalProviderContact("Apex HVAC", "AC Replacement", "Austin", "email", "quoted", 4800.0, False, "Next Tue", "Unit + Labor", "Drywall patching"),
+            LocalProviderContact("CoolBreeze LLC", "AC Replacement", "Austin", "phone_followup", "quoted", 6200.0, True, "Next Thu", "Unit + Labor + Ductwork", None),
+            LocalProviderContact("BusyAir Inc", "AC Replacement", "Austin", "email", "no_reply"),
+        ]
+        res = run_local_services_quote_agent(
+            "Replace 3-ton AC unit",
+            "Austin, TX",
+            providers,
+            budget_limit_usd=5000.0,
+            buyer_approved_contact_sharing=False,
+        )
+        self.assertEqual(res["total_providers_contacted"], 3)
+        self.assertEqual(res["quoted_count"], 2)
+        self.assertEqual(res["no_reply_count"], 1)
+        self.assertFalse(res["quote_accepted_or_booked"])
+        self.assertFalse(res["buyer_contact_shared"])
+        self.assertFalse(res["call_recordings_stored"])
+        self.assertTrue(res["comparison_table"][1]["over_budget"])
+        self.assertEqual(len(res["scope_difference_warnings"]), 1)
+
+    def test_call_for_me_booking_agent_window_alternatives_ai_and_payment_rules(self):
+        # 1. Standard booking within window
+        booked = run_call_for_me_booking_agent(
+            business_name="Osteria Mozza",
+            requested_date="2026-11-06",
+            requested_window=["19:00", "19:30", "20:00"],
+            booking_name="Alex Chen",
+            party_size_or_service="Dinner for 4",
+            business_offered_slots=["19:30", "21:30"],
+            asked_if_ai=True,
+        )
+        self.assertEqual(booked["status"], "booked")
+        self.assertEqual(booked["booked_slot"], "19:30")
+        self.assertIn("AI assistant", booked["ai_disclosure_response"])
+        self.assertFalse(booked["recording_or_transcript_retained"])
+
+        # 2. Out-of-window slot only -> must NOT book, must report offered alternatives
+        not_avail = run_call_for_me_booking_agent(
+            business_name="Osteria Mozza",
+            requested_date="2026-11-06",
+            requested_window=["19:00", "19:30"],
+            booking_name="Alex Chen",
+            party_size_or_service="Dinner for 4",
+            business_offered_slots=["21:45"],
+        )
+        self.assertEqual(not_avail["status"], "not_available")
+        self.assertIsNone(not_avail["booked_slot"])
+        self.assertEqual(not_avail["offered_alternatives"], ["21:45"])
+
+        # 3. Payment / deposit requested -> declines and reports
+        declined_pay = run_call_for_me_booking_agent(
+            business_name="Osteria Mozza",
+            requested_date="2026-11-06",
+            requested_window=["19:00"],
+            booking_name="Alex Chen",
+            party_size_or_service="Dinner for 4",
+            business_offered_slots=["19:00"],
+            asked_for_credit_card_or_deposit=True,
+        )
+        self.assertEqual(declined_pay["status"], "declined_payment_hold_required")
+        self.assertTrue(declined_pay["payment_or_deposit_declined"])
+
+    def test_sentinel_commit_543a0231_evaluations(self):
+        reject_res = evaluate_sentinel_commit_543a0231("code_refactor_and_fix")
+        self.assertEqual(reject_res["matcher_verdict"], "REJECT = TRUE")
+        self.assertTrue(reject_res["reject"])
+
+        match_res = evaluate_sentinel_commit_543a0231("sentinel_dependency_audit")
+        self.assertEqual(match_res["matcher_verdict"], "MATCH = TRUE")
+        self.assertEqual(match_res["facts_extracted"], 24)
+        self.assertFalse(match_res["gate_decision"]["blocked"])
+
+        ind_res = evaluate_sentinel_commit_543a0231("sentinel_independent_evaluation")
+        self.assertEqual(ind_res["constraint_findings"]["unit_tests_passing"], "35/35")
 
 
 if __name__ == "__main__":
