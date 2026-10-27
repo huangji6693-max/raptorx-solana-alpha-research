@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="860" viewBox="0 0 1280 860">
+  <rect width="1280" height="860" fill="#090B10"/>
+  <rect x="24" y="20" width="1232" height="56" rx="10" fill="#111520" stroke="#1E2638"/>
+  <text x="48" y="54" fill="#00F5A0" font-family="monospace" font-size="20" font-weight="bold">RAPTORX // REX AI 5.0 — SOLANA INTELLIGENCE TERMINAL</text>
+  <text x="940" y="54" fill="#8A99AD" font-family="monospace" font-size="14">Network: Solana Mainnet | 2026-10-27 UTC</text>
+
+  <!-- Left Panel: Generated Report -->
+  <rect x="24" y="92" width="590" height="744" rx="12" fill="#0E121B" stroke="#1E2638"/>
+  <text x="48" y="130" fill="#FFFFFF" font-family="sans-serif" font-size="18" font-weight="bold">REX AI 5.0 Research Report: Jito (JTO / Solana)</text>
+  <text x="48" y="156" fill="#00F5A0" font-family="monospace" font-size="13">Mint: jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL | MCap: $842M | 24h Vol: $118.4M</text>
+  <line x1="48" y1="172" x2="590" y2="172" stroke="#1E2638"/>
+
+  <text x="48" y="204" fill="#E2E8F0" font-family="sans-serif" font-size="14" font-weight="bold">1. Executive Summary &amp; Momentum Signal</text>
+  <text x="48" y="228" fill="#94A3B8" font-family="sans-serif" font-size="13">• 7D Price: +14.2% ($2.68) while 24h DEX + CEX spot volume rose +41.8%.</text>
+  <text x="48" y="250" fill="#94A3B8" font-family="sans-serif" font-size="13">• Post-Alpenglow validator stake share using Jito-Agave 4.3.2 stands at 66.7%.</text>
+  <text x="48" y="272" fill="#94A3B8" font-family="sans-serif" font-size="13">• Contradiction flagged: Perp open interest rose +29% with negative funding (-0.014%/8h)</text>
+  <text x="48" y="294" fill="#94A3B8" font-family="sans-serif" font-size="13">  while JitoSOL LST TVL grew +4.1% ($3.12B) and tip revenue fell -18% WoW.</text>
+
+  <text x="48" y="334" fill="#E2E8F0" font-family="sans-serif" font-size="14" font-weight="bold">2. On-Chain Liquidity &amp; Orderbook Depth</text>
+  <text x="48" y="358" fill="#94A3B8" font-family="sans-serif" font-size="13">• Raydium CLMM + Orca Whirlpool +/-2% combined depth: $4.85M.</text>
+  <text x="48" y="380" fill="#94A3B8" font-family="sans-serif" font-size="13">• Top 10 non-custodial whale wallets accumulated +3.4M JTO ($9.1M) over 96h.</text>
+  <text x="48" y="402" fill="#94A3B8" font-family="sans-serif" font-size="13">• TipRouter DAO fee switch captures 2.7% of MEV tips into JTO vault reserves.</text>
+
+  <rect x="48" y="432" width="542" height="165" rx="8" fill="#131926" stroke="#28354E"/>
+  <text x="66" y="460" fill="#38BDF8" font-family="monospace" font-size="13" font-weight="bold">REX SCREENER QUANT METRICS (SOLANA)</text>
+  <text x="66" y="486" fill="#CBD5E1" font-family="monospace" font-size="12">Spot Volume / MCap Ratio      : 0.1406 (Elevated)</text>
+  <text x="66" y="508" fill="#CBD5E1" font-family="monospace" font-size="12">Perp OI / Spot Depth (+/-2%)  : 14.8x  (High Squeeze Risk)</text>
+  <text x="66" y="530" fill="#CBD5E1" font-family="monospace" font-size="12">Validator Tip Revenue (7D)    : 48,920 SOL (-18.2% WoW)</text>
+  <text x="66" y="552" fill="#CBD5E1" font-family="monospace" font-size="12">Smart Money Net Inflow (96h)  : +$9.11M (Accumulation)</text>
+  <text x="66" y="574" fill="#CBD5E1" font-family="monospace" font-size="12">REX AI Conviction Score       : 78 / 100 (Bullish-Divergent)</text>
+
+  <text x="48" y="635" fill="#E2E8F0" font-family="sans-serif" font-size="14" font-weight="bold">3. Key Risk Factors Identified by REX AI 5.0</text>
+  <text x="48" y="660" fill="#94A3B8" font-family="sans-serif" font-size="13">• Alpenglow scheduler determinism reduces naive sandwich MEV bundles by ~22%.</text>
+  <text x="48" y="682" fill="#94A3B8" font-family="sans-serif" font-size="13">• Unhedged LP concentration on Orca $2.40-$2.95 tick range exposes downside</text>
+  <text x="48" y="704" fill="#94A3B8" font-family="sans-serif" font-size="13">  gamma if perp basis normalizes rapidly.</text>
+
+  <!-- Right Panel: REX AI 5.0 Conversation -->
+  <rect x="634" y="92" width="622" height="744" rx="12" fill="#0E121B" stroke="#00F5A0" stroke-width="1.5"/>
+  <text x="658" y="130" fill="#00F5A0" font-family="sans-serif" font-size="18" font-weight="bold">Claw AI / REX AI 5.0 — Interactive Alpha Dialogue</text>
+  <line x1="658" y1="148" x2="1232" y2="148" stroke="#1E2638"/>
+
+  <!-- User Question 1 -->
+  <rect x="658" y="166" width="574" height="175" rx="8" fill="#162032" stroke="#38BDF8"/>
+  <text x="676" y="190" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold">ANALYST QUESTION #1 (Dissecting Tip Revenue vs. Whale Accumulation Divergence)</text>
+  <text x="676" y="214" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">"The REX AI 5.0 report highlights a +$9.11M whale spot accumulation and +29% perp OI</text>
+  <text x="676" y="234" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">expansion alongside negative funding (-0.014%/8h), yet protocol MEV tip revenue dropped</text>
+  <text x="676" y="254" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">-18.2% WoW after the Oct 21 Alpenglow upgrade. Does this divergence indicate that</text>
+  <text x="676" y="274" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">whales are front-running JitoSOL restaking yield rather than MEV tip cashflows, or are</text>
+  <text x="676" y="294" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">market makers delta-hedging OTC unlocks via short perps? Which on-chain ratio between</text>
+  <text x="676" y="314" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">TipRouter vault inflows and JitoSOL mint velocity falsifies the fundamental bull case?"</text>
+
+  <!-- REX AI Response 1 -->
+  <rect x="658" y="356" width="574" height="210" rx="8" fill="#111823" stroke="#1E2638"/>
+  <text x="676" y="380" fill="#00F5A0" font-family="monospace" font-size="12" font-weight="bold">REX AI 5.0 RESPONSE</text>
+  <text x="676" y="404" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">1. Decomposition of the Divergence: 68% of the +$9.11M spot inflow routed into Squads</text>
+  <text x="676" y="424" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">multisigs staking into Jito Restaking (VRT vaults) rather than passive spot holding,</text>
+  <text x="676" y="444" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">while the -0.014%/8h perp funding stems from basis traders hedging locked JTO</text>
+  <text x="676" y="464" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">allocations on Drift and Binance Futures.</text>
+  <text x="676" y="490" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">2. Falsification Metric: Track (7D TipRouter DAO Vault Inflow) / (Net New JitoSOL</text>
+  <text x="676" y="510" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">Staked SOL). If TipRouter SOL/epoch falls below 6,200 SOL for 3 consecutive epochs</text>
+  <text x="676" y="530" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">while Perp OI/Depth stays &gt;12x, current valuation decouples from fee fundamentals.</text>
+
+  <!-- User Follow-up Question 2 -->
+  <rect x="658" y="580" width="574" height="125" rx="8" fill="#162032" stroke="#38BDF8"/>
+  <text x="676" y="604" fill="#38BDF8" font-family="monospace" font-size="12" font-weight="bold">FOLLOW-UP QUESTION #2 (CLMM Gamma &amp; Liquidation Cascade Stress Test)</text>
+  <text x="676" y="628" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">"Given Perp OI is 14.8x the +/-2% Raydium/Orca CLMM depth ($4.85M), what single-block</text>
+  <text x="676" y="648" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">market sell size would exhaust the $2.40-$2.65 Orca liquidity ticks and trigger a</text>
+  <text x="676" y="668" fill="#F8FAFC" font-family="sans-serif" font-size="12.5">cross-margin liquidation cascade on Drift?"</text>
+
+  <!-- REX AI Response 2 -->
+  <rect x="658" y="716" width="574" height="104" rx="8" fill="#111823" stroke="#1E2638"/>
+  <text x="676" y="738" fill="#00F5A0" font-family="monospace" font-size="12" font-weight="bold">REX AI 5.0 QUANT SIMULATION</text>
+  <text x="676" y="760" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">A single-slot sell order &gt;$3.15M (1.17M JTO) crosses 42 active Orca CLMM ticks down to</text>
+  <text x="676" y="780" fill="#CBD5E1" font-family="sans-serif" font-size="12.5">$2.39 (-10.8%), tripping $11.4M of leveraged long collateral on Drift Protocol.</text>
+</svg>
